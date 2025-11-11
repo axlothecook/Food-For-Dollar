@@ -3,5 +3,18 @@ Food For Dollar is a simulated online fake grocery store made to practice severa
 
 ## Demo video
 
+## Concepts tested
+- React Router
+- React testing 
+- Fake store api
+- Data fetching in React
+- CSS modules with SASS
+
 ## Resources used
 Free fake grocery store API: [spoonacular API](https://spoonacular.com/food-api)
+CSS styling: [CSS Modules](https://github.com/css-modules/css-modules) + [Sass](https://sass-lang.com)
+[React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+[React Router](https://reactrouter.com)
+
+
+## Possible improvements
