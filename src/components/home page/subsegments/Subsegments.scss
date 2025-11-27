@@ -1,0 +1,30 @@
+.segment {
+    // border: 1px solid red;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .segment-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            font-weight: 650;
+            font-size: 1.8rem;
+        }
+
+        h2 {
+            color: #A55B26;
+            font-weight: 500;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        h2:hover {
+            color: #d17736;
+            text-decoration: underline;
+        }
+    }
+}

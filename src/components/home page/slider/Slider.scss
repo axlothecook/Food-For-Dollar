@@ -1,0 +1,99 @@
+.slider-wrapper {
+    // border: 3px solid red;
+    animation: appear linear;
+    animation-timeline: scroll();
+    position: relative;
+    overflow: hidden;
+    background-color: none;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    width: 100%;
+
+    .slider-motion-div {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.slide {
+    // border: 3px solid green;
+    width: 100%;
+    height: 43rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+
+    .slide-child {
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        position: absolute;
+    }
+
+    .slide-text-wrapper {
+        position: absolute;
+        top: 8%;
+        margin: 0 4%;
+        // border: 1px solid red;
+
+        h1 { font-size: 4.8rem; }
+        h2 { font-size: 4rem; font-weight: 500; }
+        h3 { font-size: 3rem; font-weight: 500; }
+        h4 { font-size: 2.5rem; font-weight: 500; }
+    }
+}
+
+.ticking-bar {
+    padding: 0; 
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+
+    button {
+        height: 1rem;
+        border: none;
+        cursor: pointer;
+        background-color: grey;
+        padding: 0;
+        margin: 0;
+    }
+
+    .current-btn {
+        height: 0.7rem;
+        width: 7rem;
+        border-radius: 20px;
+        background-color: #eee;
+    }
+
+    .general-btn {
+        border-radius: 50%;
+        width: 1rem;
+    }
+    
+    .progress-bar{
+        width: 0;
+        background-color: #8f8f8f;
+        height: inherit;
+        border-radius: inherit;
+        animation: load 5.1s normal forwards;
+    }
+
+    @keyframes load {
+        0% {
+            width: 0; 
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+}

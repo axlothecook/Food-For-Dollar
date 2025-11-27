@@ -1,0 +1,107 @@
+.navbar-wrapper {
+    // border: 1px solid red;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+
+    .hover-effect {
+        position: relative;
+
+        h1 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            cursor: pointer;
+            line-height: 1;
+        }
+    }
+
+    .hover-effect::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 100%;
+        visibility: hidden;
+        height: 2px;
+        background-color: #00ADE6;
+        transition: visibility .15s ease-in-out, bottom .15s ease-in-out;
+    }
+
+    .hover-effect:hover::after {
+        visibility: visible;
+        bottom: -7px;
+    }
+
+    h1:hover {
+        color: #00ADE6;
+    }
+
+    img {
+        display: block;
+        width: 3rem;
+        min-width: 1rem;
+    }
+}
+
+.username-wrapper {
+    display: flex;
+    cursor: pointer;
+    border-radius: 100px;
+    padding: .7rem .9rem;
+    background-image: linear-gradient(rgba(231, 234, 238, .4), rgba(231, 234, 238, .4));
+    background-repeat: no-repeat;
+    transition: background-size .2s;
+    background-position: 50% 50%;
+    background-size: 0% 0%;
+
+    .user-icon {
+        width: 2.3rem;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    h2 {
+        font-weight: 500;
+        font-size: 1.2rem;
+        line-height: 1;
+    }
+
+    h3 {
+        font-size: 1rem;
+        line-height: 1.1;
+    }
+}
+
+.cart-wrapper {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border: 1px solid #E7EAEE;
+    border-radius: 100px;
+    padding: .4rem .7rem;
+    background-image: linear-gradient(rgba(231, 234, 238, .3), rgba(231, 234, 238, .3));
+    background-repeat: no-repeat;
+    transition: background-size .2s;
+    background-position: 50% 50%;
+    background-size: 0% 0%;
+
+    .basket-icon {
+        width: 1.7rem;
+        // border: 1px solid red;
+    }
+
+    h3 {
+        color: black;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+}
+
+.username-wrapper:hover, .cart-wrapper:hover {
+    background-size: 100% 100%;
+}

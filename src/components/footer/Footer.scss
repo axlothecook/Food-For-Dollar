@@ -1,0 +1,112 @@
+.footer-parent-wrapper {
+    background-color: #00ade6;
+
+    .footer-child-wrapper {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        margin: 4rem 14rem;
+
+        h3, h4 {
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        h3:hover, h4:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.main-links {
+    // border: 1px solid red;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    div {
+        display: flex; 
+        flex-direction: column;
+        gap: .7rem;
+    }
+
+    div > div {
+        gap: .3rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 630;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+
+}
+
+.social-media-links {
+    // border: 1px solid orange;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    
+    .social-media-links-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding-left: 12rem;
+    }
+
+    div:last-of-type {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+        
+        > div {
+            background-color: #eee;
+            border-radius: 50%;
+            padding: .5rem;
+
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+    }
+}
+
+.document-links {
+    // border: 1px solid greenyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    
+    h3 {
+        font-weight: 400;
+    }
+}
+
+.github-link {
+    // border: 1px solid pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: black;
+
+    h4 {
+        font-weight: 500;
+    }
+
+    :hover {
+        text-decoration: underline;
+        color: black;
+    }
+}
