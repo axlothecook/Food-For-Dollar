@@ -4,8 +4,11 @@ import logo from './icons/actual icons/food for dollar icon.png';
 import UserIcon from './icons/components/UserIcon';
 import BasketIcon from "./icons/components/BasketIcon";
 import SearchBar from "./search bar/SearchBar";
+import { useContext } from "react";
+import { NavbarDataContext } from "../../fetching/Contexts";
 
-const Navbar = ({ amount, array, searchQuery }) => {
+const Navbar = () => {
+  const { cart } =  useContext(NavbarDataContext);
   return (
     <div className="navbar-wrapper">
       <Link to="/">
@@ -21,7 +24,7 @@ const Navbar = ({ amount, array, searchQuery }) => {
           <h1>Recipe</h1>
         </div>
       </Link>
-      <SearchBar array={array} searchQuery={searchQuery} />
+      <SearchBar />
       <div className="username-wrapper">
         <UserIcon />
         <div className="username-child">
@@ -32,7 +35,7 @@ const Navbar = ({ amount, array, searchQuery }) => {
       <Link to="cart">
         <div className="cart-wrapper">
           <BasketIcon />
-          <h3>{amount}</h3>
+          <h3>{cart.total}</h3>
         </div>
       </Link>
     </div>

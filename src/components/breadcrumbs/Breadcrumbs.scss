@@ -1,0 +1,28 @@
+.breadcrumbs-wrapper {
+    display: flex;
+    width: 30rem;
+    border: 1px solid red;
+    justify-content: space-between;
+
+    .breadcrumbs-go-back {
+        color: #00ADE6;
+        display: flex;
+        gap: 2rem;
+
+        h2 {
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+    }
+
+    .breadcrumbs-path {
+        color: #647887;
+        display: flex;
+        gap: 1.3rem;
+    }
+}
+
+
+.arrow {
+    width: 1rem;
+}

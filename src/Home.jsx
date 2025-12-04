@@ -1,25 +1,27 @@
 import { useRef, useState } from 'react'
 import './Home.scss';
-import Navbar from './components/navbar/Navbar';
+import { NavbarDataContext } from './fetching/Contexts';
 import Location from './components/home page/location tracking/Location';
 import Slider from './components/home page/slider/Slider';
-import Footer from './components/footer/Footer';
 import ProductMananager from './components/home page/subsegments/products line/ProductManager';
 import ListOfRecipes from './components/home page/subsegments/recipes line/Recipes';
 import Subsegment from './components/home page/subsegments/Subsegment';
 import TalkToChef from './components/home page/subsegments/ai line/AI-entry';
 import usePreProcessor from './fetching/preProcessor';
+import Template from './components/page template/Template';
 
 function HomePage() {
-  const [cart, setCart] = useState('0.00');
+  const [cart, setCart] = useState({
+    total: '0.00',
+    products: []
+  });
   const shouldRefetchRef = useRef(0);
-  const searchQuery = useRef(['potato', 'juice', 'cookie', 'bread', 'beef']);
-
+  const searchQuery = useRef();
   let {productsArray, loading, error} = usePreProcessor(shouldRefetchRef, searchQuery);
   const arrayToDisplay = [
     {
       id: 1,
-      component: <ProductMananager array={productsArray} />,
+      component: <ProductMananager />,
       mainText: 'You may want',
       subText: 'See More'
     },
@@ -43,16 +45,11 @@ function HomePage() {
   // console.log(error.current);
 
   return (
-    <div className="home-wrapper">
-      <div className='home-wrapper-child'>
-        <Navbar 
-          amount={cart} 
-          array={productsArray} 
-          searchQuery={searchQuery}
-        />
+    <NavbarDataContext value={{ cart, productsArray, searchQuery }}>
+      <Template>
         <Location />
         <Slider />
-        <div className='subsegment-home-wrapper'>
+        <div className='home-wrapper'>
           {arrayToDisplay && arrayToDisplay.map((item) => (
             <Subsegment 
               key={item.id} 
@@ -62,9 +59,8 @@ function HomePage() {
             />
           ))}
         </div>
-      </div>
-      <Footer />
-    </div>
+      </Template>
+    </NavbarDataContext>
   );
 };
 

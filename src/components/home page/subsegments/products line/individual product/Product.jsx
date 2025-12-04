@@ -3,7 +3,7 @@ import ArrowRight from '../svgs/actual components/Arrow_Right';
 import MinusIcon from '../svgs/actual components/MinusIcon';
 import PlusIcon from '../svgs/actual components/PlusIcon';
 
-const Product = ({item}) => {
+const Product = ({ item }) => {
     return (
         <div className='product'>
             <div className='upper-part-of-product' style={{backgroundImage: `url(${item.link})`}}>

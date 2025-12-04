@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import useLink from "./useLink";
-import data from "./temporary";
+import dataTemp from "./temporary";
 
 const usePreProcessor = (shouldRefetchRef, searchQuery) => {
-    // let { data, loading, error } = useLink(shouldRefetchRef, searchQuery);
+    let { data, loading, error } = useLink(shouldRefetchRef, searchQuery);
+    // console.log(data);
     const tempArr = useRef([]);
     const [productsArray, setProductsArray] = useState([]);
     useEffect(() => {
         function fillData() {
             tempArr.current = [];
             let count = 0;
-            data.map(item => {
+            dataTemp.map(item => {
                 let fixedPrice = (Math.random() * (1 - 0.4) + 0.4).toFixed(2);
                 let fixedWeight = `${Math.floor(Math.random() * 1000)} ${item.shoppingListUnits[0] === 'pieces' ? 'g' : item.shoppingListUnits[0]}`;
                 tempArr.current = [

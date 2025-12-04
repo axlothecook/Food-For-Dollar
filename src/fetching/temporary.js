@@ -4,7 +4,7 @@ import image3 from './image/chips.jpg';
 import image4 from './image/bread.png';
 import image5 from './image/beef.jpg';
 
-const data = [
+const dataTemp = [
     {
         name: 'Cereal',
         image: image1,
@@ -42,4 +42,4 @@ const data = [
     }
 ];
 
-export default data;
+export default dataTemp;
