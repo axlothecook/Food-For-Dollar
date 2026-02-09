@@ -8,7 +8,8 @@ import { useContext } from "react";
 import { NavbarDataContext } from "../../fetching/Contexts";
 
 const Navbar = () => {
-  const { cart } =  useContext(NavbarDataContext);
+  const { cart } = useContext(NavbarDataContext);
+
   return (
     <div className="navbar-wrapper">
       <Link to="/">

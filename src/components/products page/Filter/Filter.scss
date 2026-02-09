@@ -1,0 +1,96 @@
+.filter-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    .filter-title {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        // border: 1px solid red;
+        // position: relative;
+        // overflow: hidden;
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+
+        #arrow {
+            width: 1.5rem;
+            height: fit-content;
+            // border: 1px solid red;
+            margin-top: .65rem;
+        }
+    }
+    
+    .line-div {
+        border-bottom: 1px solid grey;
+        // position: relative;
+        // overflow: hidden;
+    }
+
+    // .slide-up {
+    //     // position: absolute;
+    //     // top: 0px;
+    //     transform: translateY(-100%);
+    // }
+
+    .slide-down {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        // top: 100;
+    }
+
+    // .slide-down {
+    //     overflow: hidden;
+    // }
+
+    // .slide-down {
+    //     transform: translateY(-100%);
+    //     transition: .4s ease-in-out;
+    // }
+
+    // .slide-down {            
+    //     transform: translateY(0);
+    // } 
+
+    label {
+        // border: 1px solid red;
+        display: flex;
+        gap: .9rem;
+        cursor: pointer;
+
+        h3 {
+            font-weight: 400;
+        }
+
+        h3:last-of-type {
+            color: grey;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="checkbox"] + span {
+            display: inline-block;
+            position: relative;
+            width: 1rem;
+            height: 1rem;
+            vertical-align: middle;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        #tick {
+            position: absolute;
+            top: .05rem;
+            left: .07rem;
+            fill: #00ADE6;
+            width: .7rem;
+            height: .7rem;
+        }
+    }
+}

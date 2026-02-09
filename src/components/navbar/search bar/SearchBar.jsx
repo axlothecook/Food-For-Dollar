@@ -1,74 +1,105 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './SearchBar.scss';
 import SearchIcon from "../icons/components/SearchIcon";
 import { NavbarDataContext } from '../../../fetching/Contexts';
 
 const SearchBar = () => {
-    const { productsArray, searchQuery } = useContext(NavbarDataContext);
+    const { 
+        autocompleteProductsArray,
+        searchQuery, 
+        setSearchQuery,
+        setSearchedProduct
+    } = useContext(NavbarDataContext);
     const dialogRef = useRef(false);
+    const [inputValue, setInputValue] = useState();
 
     const tempProductsArray = [
         {
-            name: 'wwwwwwww'
+            id: 1077,
+            name: 'milk'
         },
         {
-            name: 'ooooo'
+            id: 11090,
+            name: 'broccoli'
         },
         {
-            name: '22222222'
+            //finish searching by word
+            name: 'Pizza'
         },
         {
-            name: 'iiiuiuiui'
+            name: 'Ice cream'
         },
         {
-            name: 'gwqqqqqqqq'
+            name: 'Flour'
         }
     ];
-    console.log(productsArray);
 
-    function openModal() {
-        if(dialogRef.current) dialogRef.current.showModal();
+    const openModal = () => (dialogRef.current) ? dialogRef.current.showModal() : null;
+
+    // put only name if u use only name
+    const onClick = (item) => {
+        // const data = {
+        //     ingredients: ['apple'],
+        //     servings: 1
+        // };
+        // setSearchedProduct({
+        //     ingredients: [item.name],
+        //     servings: 1
+        // });
+        setSearchedProduct(item.name);
+        // console.log(item)
+        setInputValue(item.name);
+        dialogRef.current.close();
     };
 
-    console.log('is dialog open 1? ' + dialogRef.current.open)
-
     useEffect(() => {
-        const handler = (event) => {
-            console.log('is dialog open 2? ' + dialogRef.current.open)
-
-            if (dialogRef.current.open && event.target.contains(dialogRef.current)) dialogRef.current.close();
-        };
+        const handler = (event) => (dialogRef.current.open && event.target.contains(dialogRef.current)) ? 
+        dialogRef.current.close() : null;
 
         document.addEventListener("click", handler, true);
+
         return () => {
             document.removeEventListener("click", handler);
         };
+
     }, []);
 
     return (
         <div className="search-bar-wrapper">
             <div className='fake-input-div' onClick={() => openModal()}>
-                <SearchIcon width={'1.2rem'} />
-                <h3>What are you looking for?</h3>
+                <SearchIcon width={'1.1rem'} />
+                <input 
+                placeholder='What are you looking for?' 
+                value={inputValue} 
+                />
             </div>
             <dialog ref={dialogRef} onClick={(e) => e.stopPropagation()}>
                 <div className='modal-child-wrapper'>
                     <div className="input-wrapper">
-                        <SearchIcon width={'1.2rem'} />
+                        <SearchIcon width={'1.1rem'} />
                         <input 
                         id='input'
                         placeholder='What are you looking for?' 
-                        onInput={(e) => {
-                            // searchQuery.current = e.value.target;
-                            console.log(e.target.value);
-                        }}
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        onInput={(e) => setSearchQuery(e.target.value)}
+                        // onKeyDown={(e) => {
+                        //     if (e.key === 'Enter') onClick(e.target.value);
+                        // }}
                         /> 
                     </div>
-                    {/* <h1>hello</h1> */}
-                    {tempProductsArray && <ul>
-                        {tempProductsArray.map((item) => (
-                            <li key={item.name}>
-                                <SearchIcon width={'1.5rem'} />
+                    {!searchQuery && <ul>
+                        {tempProductsArray.map((item, idx) => (
+                            <li key={idx} onClick={() => onClick(item)}>
+                                <SearchIcon width={'1.3rem'} />
+                                <h3>{item.name}</h3> 
+                            </li>
+                        ))}
+                    </ul>}
+                    {searchQuery && <ul>
+                        {autocompleteProductsArray.map((item, idx) => (
+                            <li key={idx} onClick={() => onClick(item)}>
+                                <SearchIcon width={'1.3rem'} />
                                 <h3>{item.name}</h3> 
                             </li>
                         ))}
