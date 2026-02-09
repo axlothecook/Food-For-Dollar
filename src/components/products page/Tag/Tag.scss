@@ -1,0 +1,39 @@
+.tag-wrapper {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem .7rem;
+    border: 1px solid #EDEFF2;
+    border-radius: 30px;
+    background-color: transparent;
+    cursor: pointer;
+
+    h4 {
+        font-size: .9rem;
+    }
+
+    h4:last-of-type {
+        font-weight: 400;
+    }
+
+    #close-icon {
+        width: 1rem;
+    }
+
+    .tag-icon {
+        width: 1.3rem;
+    }
+
+    #vegan-icon {
+        width: 1.1rem;
+    }
+
+    #domestic-icon {
+        width: 1.5rem;
+    }
+}
+
+// %smt {
+//     color: blue;
+// }

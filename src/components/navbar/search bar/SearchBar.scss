@@ -1,43 +1,77 @@
 .search-bar-wrapper {
     flex-grow: 0.7;
     min-width: 17rem;
-    border: 1px solid blue;
-    position: relative;
+    // border: 1px solid blue;
 
-    .search-bar-icon {
-        width: 1.5rem;
-    }
-
-    div {
+    .fake-input-div {
         display: flex;
         gap: .6rem;
         background-color: #f3f6f8;
+        // background-color: purple;
         border: none;
-        border-radius: 100px;
-        padding: .7rem 0 .7rem 1.3rem;
+        border-radius: 25px;
+        padding: 1rem 0 1rem 1.3rem;
 
-        h3 {
-            font-weight: 500;
+        input {
             font-size: 1rem;
-            color: grey;
+            color: #000;
+            background-color: transparent;
+            border: none;
+            outline: none;
         }
+    }
 
-        // input {
-        //     font-size: 1rem;
-        //     background-color: #f3f6f8;
-        //     border: none;
-        //     width: 90%;
-        //     color: black;
-        // }
-        
-        // input:focus {
-        //     outline: none;
-        // }
+    dialog {
+        width: 43rem;
+        position: fixed;
+        top: 2.8%;
+        left: 32.8%;
+        border: none;
+        background-color: transparent;
+        fill: none;
+        // border: 1px solid yellow;
+        height: fit-content;
+        position: relative;
+
+        .modal-child-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            // border: 3px solid blue;
+
+            .input-wrapper {
+                display: flex;
+                gap: .6rem;
+                background-color: #f3f6f8;
+                border: none;
+                border-radius: 25px;
+                padding: 1rem 0 1rem 1.3rem;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+                // border: 1px solid blue;
+
+                input {
+                    font-size: 1rem;
+                    background-color: #f3f6f8;
+                    border: none;
+                    width: 90%;
+                    color: black;
+
+                    // border: 1px solid goldenrod;
+                }
+                
+                input:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    dialog::backdrop {
+        background-color: rgba(0, 0, 0, .5);
     }
 
     ul {
-        position: absolute;
-        z-index: 3;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -46,14 +80,22 @@
         border: none;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
-        padding: .7rem 0;
+        padding-bottom: 1.6rem;
+        // border: 1px solid green;
 
         li {
             display: flex;
+            align-items: center;
             gap: .5rem;
-            padding: .5rem .7rem;
+            padding: .4rem 1rem;
             cursor: pointer;
-            border: 1px solid red;
+            color: black;
+            // border: 1px solid red;
+
+            h3 {
+                font-weight: 400;
+                font-size: 1.1rem;
+            }
         }
 
         li:hover {

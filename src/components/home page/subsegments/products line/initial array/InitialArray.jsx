@@ -4,42 +4,57 @@ import image3 from './image/chips.jpg';
 import image4 from './image/bread.png';
 import image5 from './image/beef.jpg';
 
-const data = [
+const initialProductsArray = [
     {
         name: 'Cereal',
-        image: image1,
+        mass: '300g',
+        link: image1,
+        price: '0.78',
         amount: 1,
         shoppingListUnits: ["pieces"],
-        discount: null
+        discount: null,
+        colorScheme: '#00ADE6'
     },
     {
         name: 'Orange Juice',
-        image: image2,
+        mass: '700mL',
+        link: image2,
+        price: '0.90',
         amount: 1,
         shoppingListUnits: ["litres"],
-        discount: '30%'
+        discount: '30%',
+        colorScheme: '#FF7900'
     },
     {
         name: 'Fine chipies',
-        image: image3,
+        mass: '500g',
+        link: image3,
+        price: '0.99',
         amount: 1,
         shoppingListUnits: ["pieces"],
-        discount: null
+        discount: null,
+        colorScheme: '#00ADE6'
     },
     {
         name: 'White Bread',
-        image: image4,
+        mass: '700g',
+        link: image4,
+        price: '0.43',
         amount: 7,
         shoppingListUnits: ["pieces"],
-        discount: null
+        discount: null,
+        colorScheme: '#00ADE6'
     },
     {
         name: 'Fresh beef',
-        image: image5,
+        mass: '800g',
+        link: image5,
+        price: '0.99',
         amount: 1,
         shoppingListUnits: ["pieces"],
-        discount: '50%'
+        discount: '50%',
+        colorScheme: '#FF7900'
     }
 ];
 
-export default data;
+export default initialProductsArray;

@@ -48,15 +48,15 @@
     display: flex;
     cursor: pointer;
     border-radius: 100px;
-    padding: .7rem .9rem;
+    padding: .5rem .9rem;
     background-image: linear-gradient(rgba(231, 234, 238, .4), rgba(231, 234, 238, .4));
     background-repeat: no-repeat;
     transition: background-size .2s;
     background-position: 50% 50%;
     background-size: 0% 0%;
 
-    .user-icon {
-        width: 2.3rem;
+    #user-icon {
+        width: 1.7rem;
     }
 
     div {
@@ -67,12 +67,12 @@
 
     h2 {
         font-weight: 500;
-        font-size: 1.2rem;
+        font-size: 1rem;
         line-height: 1;
     }
 
     h3 {
-        font-size: 1rem;
+        font-size: .8rem;
         line-height: 1.1;
     }
 }

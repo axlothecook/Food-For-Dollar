@@ -1,8 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router';
+import { createBrowserRouter, RouterProvider, BrowserRouter } from 'react-router';
 import routes from './routes.jsx';
 import './index.css'
+import { NavbarDataContext } from './fetching/Contexts.jsx';
 // import HomePage from './Home.jsx';
 // import ErrorPage from './components/error page/ErrorPage.jsx';
 // import ProductsPage from './components/products page/ProductsPage.jsx';
@@ -27,7 +28,12 @@ const router = createBrowserRouter(routes);
 // ])
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+  // <BrowserRouter>
+    <StrictMode>
+      {/* <NavbarDataContext> */}
+        <RouterProvider router={router} />
+      {/* </NavbarDataContext> */}
+    </StrictMode>
+  // </BrowserRouter>
+  ,
 );

@@ -1,18 +1,5 @@
 .home-wrapper {
-    // border: 1px solid blue;
     display: flex;
     flex-direction: column;
-
-    .home-wrapper-child {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        margin: 1.5rem 14rem 0;
-
-        .subsegment-home-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 6rem;
-        }
-    }
+    gap: 6rem;
 }

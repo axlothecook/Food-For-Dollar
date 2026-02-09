@@ -1,47 +1,74 @@
 import { useEffect, useRef, useState } from "react";
 import useLink from "./useLink";
-import data from "./temporary";
 
-const usePreProcessor = (shouldRefetchRef, searchQuery) => {
-    // let { data, loading, error } = useLink(shouldRefetchRef, searchQuery);
-    const tempArr = useRef([]);
-    const [productsArray, setProductsArray] = useState([]);
+const usePreProcessor = (shouldRefetchRef, searchQuery, searchedProduct) => {
+    let { autocompleteData, productsData, loading, error } = useLink(shouldRefetchRef, searchQuery, searchedProduct);
+    const [autocompleteProductsArray, setAutocompleteProductsArray] = useState([]);
+    const tempAutocompleteProductsArr = useRef();
+    const [productsArray, setProductsArray] = useState([]); 
+    const tempSearchResultsArr = useRef();
     useEffect(() => {
-        function fillData() {
-            tempArr.current = [];
-            let count = 0;
-            data.map(item => {
-                let fixedPrice = (Math.random() * (1 - 0.4) + 0.4).toFixed(2);
-                let fixedWeight = `${Math.floor(Math.random() * 1000)} ${item.shoppingListUnits[0] === 'pieces' ? 'g' : item.shoppingListUnits[0]}`;
-                tempArr.current = [
-                    ...tempArr.current,
+        function getAutocompleteResults() {
+            console.log('hello before processing 1')
+            tempAutocompleteProductsArr.current = [];
+            autocompleteData.map((item) => {
+                tempAutocompleteProductsArr.current = [
+                    ...tempAutocompleteProductsArr.current,
                     {
-                        id: count,
-                        name: item.name,
-                        mass: fixedWeight,
-                        link: item.image,
-                        price: fixedPrice,
-                        discount: item.discount,
-                        colorScheme: item.discount ? '#FF7900' : '#00ADE6'
+                        id: item.id,
+                        name: item.name
                     },
                 ];
-                count++;
             });
-
-            // console.log('array:');
-            // console.log(tempArr.current);
-            setProductsArray(tempArr.current);
+            setAutocompleteProductsArray(tempAutocompleteProductsArr.current);
         };
 
-        if(shouldRefetchRef.current === 0) {
-            fillData();
-            shouldRefetchRef.current = shouldRefetchRef.current + 1;
+        if(autocompleteData) getAutocompleteResults();
+
+    }, [autocompleteData]);
+
+    useEffect(() => {
+        function getSearchedProducts() {
+            console.log('hello before processing 2')
+            tempSearchResultsArr.current = [];
+            console.log(productsData)
+            let totalTemp = productsData.searchResults[1].totalResults + productsData.searchResults[5].totalResults;
+            productsData.searchResults[1].results.map((item) => {
+                let fixedPrice = (Math.random() * (1 - 0.4) + 0.4).toFixed(2);
+                let fixedDiscount = fixedPrice < 0.7 ? true : false;
+                let fixedWeight = `${Math.floor(Math.random() * 1000)} ${fixedDiscount ? 'g' : 'pieces'}`;
+                tempSearchResultsArr.current = [
+                    ...tempSearchResultsArr.current,
+                    {
+                        id: item.id,
+                        name: item.name,
+                        number: item.servings.number,
+                        mass: fixedWeight,
+                        thumbnail: item.image,
+                        images: item.images,
+                        description: item.generatedText,
+                        nutritionValues: item.nutrition,
+                        ingredientList: item.ingredientList,
+                        tags: item.badges,
+                        brand: item.brand,
+                        price: fixedPrice,
+                        discount: fixedDiscount,
+                        colorScheme: fixedDiscount ? '#FF7900' : '#00ADE6'
+                    },
+                ];
+            });
+            setProductsArray({
+                amountOfProducts: totalTemp,
+                array: tempSearchResultsArr.current
+            });
         };
 
-        //searchQuery.current
-    }, []);
+        if(productsData) getSearchedProducts();
+
+    }, [productsData]);
 
     return {
+        autocompleteProductsArray,
         productsArray,
         // loading, 
         // error

@@ -1,0 +1,28 @@
+try {
+    console.log('hello before fetch 2');
+    loading.current = true; 
+    //https://api.spoonacular.com/food/ingredients/${individualProduct.id}/information?
+    fetch(`https://api.spoonacular.com/food/products/search?query=${individualProduct.name}&number=15&addProductInformation=true`, 
+    {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': `${SPOONACULAR_API_KEY}`,
+        },
+    })
+    .then((response) => response.json())
+    .then((response) => {
+        console.log('response 2:');
+        console.log(response);
+        setProductsData(response);
+    })
+    .catch((e) => {
+        console.log(`Fetch Data Error: ${e}`);
+        error.current = e;
+    });
+} catch (err) {
+    setProductsData(null);
+    error.current = err;
+} finally {
+    loading.current = false;
+};

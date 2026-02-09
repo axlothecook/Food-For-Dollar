@@ -21,8 +21,8 @@ const recipeArray = [
     },
     {
         id: 3,
-        name: 'Salted Egg Chicken',
-        duration: '25 - 40 min',
+        name: 'Lotus Biscoff cheesecake',
+        duration: '4 - 7 hours',
         link: image3
     },
     {
@@ -45,8 +45,8 @@ const recipeArray = [
     },
     {
         id: 7,
-        name: 'Lotus Biscoff cheesecake',
-        duration: '4 - 7 hours',
+        name: 'Salted Egg Chicken',
+        duration: '25 - 40 min',
         link: image7
     },
 ];
